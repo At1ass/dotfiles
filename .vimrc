@@ -16,6 +16,7 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -37,6 +38,9 @@ Plugin 'tpope/vim-fugitive'
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'https://github.com/morhetz/gruvbox.git'
+Plugin 'https://github.com/skanehira/preview-markdown.vim.git'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -44,6 +48,7 @@ Plugin 'neoclide/coc.nvim'
 " Plugin 'ycm-core/YouCompleteMe'
 " Plugin 'rdnetto/YCM-Generator'
 Plugin 'https://github.com/rhysd/vim-clang-format.git'
+Plugin 'https://github.com/preservim/tagbar.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -72,6 +77,7 @@ colorscheme gruvbox
 "let g:ycm_auto_trigger = 1 
 "let g:ycm_semantic_triggers = {'c': ['']}
 
+let g:preview_markdown_auto_update = 1
 
 "let g:clang_format#command = 'clang-format'
 let g:clang_format#auto_format = 1
@@ -80,18 +86,26 @@ let g:clang_format#auto_format = 1
 
 let g:clang_format#detect_style_file = 1
 
-"let g:clipboard = {
-"      \   'name': 'myClipboard',
-"      \   'copy': {
-"      \      '+': ['tmux', 'load-buffer', '-'],
-"      \      '*': ['tmux', 'load-buffer', '-'],
-"      \    },
-"      \   'paste': {
-"      \      '+': ['tmux', 'save-buffer', '-'],
-"      \      '*': ['tmux', 'save-buffer', '-'],
-"      \   },
-"      \   'cache_enabled': 1,
-"      \ }
+let g:clipboard = {
+      \   'name': 'myClipboard',
+      \   'copy': {
+      \      '+': ['tmux', 'load-buffer', '-'],
+      \      '*': ['tmux', 'load-buffer', '-'],
+      \    },
+      \   'paste': {
+      \      '+': ['tmux', 'save-buffer', '-'],
+      \      '*': ['tmux', 'save-buffer', '-'],
+      \   },
+      \   'cache_enabled': 1,
+      \ }
+
+
+"nmap <F8> :TagbarToggle<CR>
+
+autocmd VimEnter *.c,*.h,*.cpp TagbarToggle
+
+let g:tagbar_compact = 1
+let g:tagbar_sort = 0
 
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -111,7 +125,8 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 20
 augroup ProjectDrawer
 	autocmd!
-	autocmd VimEnter * :Vexplore
+	"autocmd VimEnter * :Vexplore
+	nmap <F8> :Vexplore<CR> 
 augroup END
 
 " use <tab> for trigger completion and navigate to the next complete item
@@ -124,3 +139,23 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ?  "\<C-n>" :
 	  \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+
+noremap <C-a> :Files<CR>
+
+" Default fzf layout
+" - Popup window (center of the screen)
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
+" - Popup window (center of the current window)
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
+
+" - Popup window (anchored to the bottom of the current window)
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
+
+" - down / up / left / right
+let g:fzf_layout = { 'down': '40%' }
+
+" - Window using a Vim command
+"let g:fzf_layout = { 'window': 'enew' }
+"let g:fzf_layout = { 'window': '-tabnew' }
+"let g:fzf_layout = { 'window': '10new' }
