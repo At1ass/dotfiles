@@ -78,20 +78,10 @@ set background=dark
 colorscheme gruvbox
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
-"let g:ycm_clangd_binary_path = "/usr/bin/clangd-10"
-"let g:ycm_use_clangd = 1
-"let g:ycm_global_ycm_extra_conf = '$HOME/.ycm_extra_conf.py'
-"let g:ycm_min_num_of_chars_for_completion = 99
-"let g:ycm_auto_trigger = 1 
-"let g:ycm_semantic_triggers = {'c': ['']}
 
 let g:preview_markdown_auto_update = 1
 
-"let g:clang_format#command = 'clang-format'
 let g:clang_format#auto_format = 1
-"let g:clang_format#style_options = {
-"	}
-
 let g:clang_format#detect_style_file = 1
 
 let g:clipboard = {
@@ -150,20 +140,4 @@ inoremap <silent><expr> <Tab>
 
 noremap <C-a> :Files<CR>
 
-" Default fzf layout
-" - Popup window (center of the screen)
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-
-" - Popup window (center of the current window)
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
-
-" - Popup window (anchored to the bottom of the current window)
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
-
-" - down / up / left / right
 let g:fzf_layout = { 'down': '40%' }
-
-" - Window using a Vim command
-"let g:fzf_layout = { 'window': 'enew' }
-"let g:fzf_layout = { 'window': '-tabnew' }
-"let g:fzf_layout = { 'window': '10new' }
