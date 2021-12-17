@@ -6,6 +6,7 @@ set clipboard+=unnamedplus
 
 
 set nocompatible              " be iMproved, required
+set noswapfile
 set showcmd
 set backspace=indent,eol,start
 set pastetoggle=<F2>
@@ -28,6 +29,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -41,6 +44,9 @@ Plugin 'https://github.com/morhetz/gruvbox.git'
 Plugin 'https://github.com/skanehira/preview-markdown.vim.git'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'easymotion/vim-easymotion.git'
+
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -67,9 +73,11 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 xmap <C-c> :norm i//<CR>
 xmap <C-x> :norm xx<CR>
-
+map <Leader> <Plug>(easymotion-prefix)
 set background=dark
 colorscheme gruvbox
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
 "let g:ycm_clangd_binary_path = "/usr/bin/clangd-10"
 "let g:ycm_use_clangd = 1
 "let g:ycm_global_ycm_extra_conf = '$HOME/.ycm_extra_conf.py'
