@@ -3,13 +3,15 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 set clipboard+=unnamedplus
-
+set nu
 
 set nocompatible              " be iMproved, required
 set noswapfile
 set showcmd
 set backspace=indent,eol,start
 set pastetoggle=<F2>
+
+packadd termdebug
 
 syntax on
 
@@ -31,7 +33,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'preservim/nerdtree'
+Plugin 'preservim/vimux'
+Plugin 'sigidagi/vim-cmake-project'
 " plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'cdelledonne/vim-cmake'
+Plugin 'unkiwii/vim-nerdtree-sync'
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
@@ -71,8 +78,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-xmap <C-c> :norm i//<CR>
-xmap <C-x> :norm xx<CR>
+let g:nerdtree_sync_cursorline = 1
+tnoremap <Esc> <C-\><C-n>
+
 map <Leader> <Plug>(easymotion-prefix)
 set background=dark
 colorscheme gruvbox
@@ -81,7 +89,11 @@ let g:airline_solarized_bg='dark'
 
 let g:preview_markdown_auto_update = 1
 
+"let g:clang_format#command = 'clang-format'
 let g:clang_format#auto_format = 1
+"let g:clang_format#style_options = {
+"	}
+
 let g:clang_format#detect_style_file = 1
 
 let g:clipboard = {
@@ -98,12 +110,13 @@ let g:clipboard = {
       \ }
 
 
-"nmap <F8> :TagbarToggle<CR>
-
+nmap <F8> :TagbarToggle<CR>
 autocmd VimEnter *.c,*.h,*.cpp TagbarToggle
-
+"autocmd BufNew,BufRead,BufEnter *.c,*.h,*.cpp TagbarToggle
 let g:tagbar_compact = 1
 let g:tagbar_sort = 0
+
+let g:termdebug_wide = 1
 
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -121,11 +134,11 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
-augroup ProjectDrawer
-	autocmd!
-	"autocmd VimEnter * :Vexplore
-	nmap <F8> :Vexplore<CR> 
-augroup END
+"augroup ProjectDrawer
+"	autocmd!
+"	"autocmd VimEnter * :Vexplore
+"	nmap <F8> :Vexplore<CR> 
+"augroup END
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -141,3 +154,4 @@ inoremap <silent><expr> <Tab>
 noremap <C-a> :Files<CR>
 
 let g:fzf_layout = { 'down': '40%' }
+map <C-f> :Ag<CR>
