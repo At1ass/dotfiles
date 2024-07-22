@@ -39,6 +39,9 @@ Plugin 'sigidagi/vim-cmake-project'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'cdelledonne/vim-cmake'
 Plugin 'unkiwii/vim-nerdtree-sync'
+Plugin 'lifepillar/pgsql.vim.git'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'nvim-telescope/telescope.nvim'
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
@@ -62,12 +65,23 @@ Plugin 'neoclide/coc.nvim'
 " Plugin 'rdnetto/YCM-Generator'
 Plugin 'https://github.com/rhysd/vim-clang-format.git'
 Plugin 'https://github.com/preservim/tagbar.git'
+Plugin 'puremourning/vimspector'
+
+" Plugin for SQL
+Plugin 'https://github.com/tpope/vim-dadbod'
+Plugin 'https://github.com/kristijanhusak/vim-dadbod-completion'
+Plugin 'https://github.com/kristijanhusak/vim-dadbod-ui'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+let g:python3_host_prog = '/usr/bin/python3'
+let g:vimspector_enable_mappings = 'HUMAN'
+nnoremap <leader>sr <cmd>VimspectorReset<CR>
+nmap <leader><CR> <Plug>VimspectorBalloonEval<CR>
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+" filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -90,26 +104,31 @@ let g:airline_solarized_bg='dark'
 let g:preview_markdown_auto_update = 1
 
 "let g:clang_format#command = 'clang-format'
-let g:clang_format#auto_format = 1
+"let g:clang_format#auto_format = 1
 "let g:clang_format#style_options = {
 "	}
 
-let g:clang_format#detect_style_file = 1
+"let g:clang_format#detect_style_file = 1
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 let g:clipboard = {
       \   'name': 'myClipboard',
       \   'copy': {
-      \      '+': ['tmux', 'load-buffer', '-'],
-      \      '*': ['tmux', 'load-buffer', '-'],
+      \      '+': ['xclip', '-quiet', '-i', '-selection', 'clipboard'],
+      \      '*': ['xclip', '-quiet', '-i', '-selection', 'primary'],
       \    },
       \   'paste': {
-      \      '+': ['tmux', 'save-buffer', '-'],
-      \      '*': ['tmux', 'save-buffer', '-'],
+      \      '+': ['xclip', '-o', '-selection', 'clipboard'],
+      \      '*': ['xclip', '-o', '-selection', 'primary'],
       \   },
       \   'cache_enabled': 1,
       \ }
 
-
+nmap <Tab>a :Ag<CR>
 nmap <F8> :TagbarToggle<CR>
 autocmd VimEnter *.c,*.h,*.cpp TagbarToggle
 "autocmd BufNew,BufRead,BufEnter *.c,*.h,*.cpp TagbarToggle
@@ -134,22 +153,23 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
-"augroup ProjectDrawer
-"	autocmd!
-"	"autocmd VimEnter * :Vexplore
-"	nmap <F8> :Vexplore<CR> 
-"augroup END
+augroup ProjectDrawer
+	autocmd!
+	autocmd VimEnter * :Vexplore
+	nmap <F8> :Vexplore<CR> 
+augroup END
 
 " use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
+function! Check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
 inoremap <silent><expr> <Tab>
       \ pumvisible() ?  "\<C-n>" :
-	  \ <SID>check_back_space() ? "\<Tab>" :
+	  \ Check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 noremap <C-a> :Files<CR>
 
