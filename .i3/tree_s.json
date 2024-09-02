@@ -1,0 +1,485 @@
+{
+  "id": 101114741322880,
+  "type": "workspace",
+  "orientation": "vertical",
+  "scratchpad_state": "none",
+  "percent": 1.0,
+  "urgent": false,
+  "marks": [],
+  "focused": false,
+  "output": "DP-0",
+  "layout": "splitv",
+  "workspace_layout": "default",
+  "last_split_layout": "splitv",
+  "border": "normal",
+  "current_border_width": -1,
+  "rect": {
+    "x": 0,
+    "y": 40,
+    "width": 1080,
+    "height": 1880
+  },
+  "deco_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "window_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "geometry": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "name": "8",
+  "window_icon_padding": -1,
+  "num": 8,
+  "gaps": {
+    "inner": 0,
+    "outer": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "window": null,
+  "window_type": null,
+  "nodes": [
+    {
+      "id": 101114741323360,
+      "type": "con",
+      "orientation": "none",
+      "scratchpad_state": "none",
+      "percent": 1.0,
+      "urgent": false,
+      "marks": [],
+      "focused": false,
+      "output": "DP-0",
+      "layout": "splith",
+      "workspace_layout": "default",
+      "last_split_layout": "splith",
+      "border": "pixel",
+      "current_border_width": 1,
+      "rect": {
+        "x": 0,
+        "y": 40,
+        "width": 1080,
+        "height": 1880
+      },
+      "deco_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "window_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1880
+      },
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1854
+      },
+      "name": "json - How to nicely remove empty array in jq - Stack Overflow — Mozilla Firefox",
+      "window_icon_padding": -1,
+      "window": 27263021,
+      "window_type": "normal",
+      "window_properties": {
+        "class": "firefox",
+        "instance": "Navigator",
+        "window_role": "browser",
+        "machine": "at1ass-ms7e10",
+        "title": "json - How to nicely remove empty array in jq - Stack Overflow — Mozilla Firefox",
+        "transient_for": null
+      },
+      "nodes": [],
+      "floating_nodes": [],
+      "focus": [],
+      "fullscreen_mode": 0,
+      "sticky": false,
+      "floating": "auto_off",
+      "swallows": []
+    }
+  ],
+  "floating_nodes": [],
+  "focus": [
+    101114741323360
+  ],
+  "fullscreen_mode": 1,
+  "sticky": false,
+  "floating": "auto_off",
+  "swallows": []
+}
+{
+  "id": 101114741342800,
+  "type": "workspace",
+  "orientation": "horizontal",
+  "scratchpad_state": "none",
+  "percent": 0.33333333333333331483,
+  "urgent": false,
+  "marks": [],
+  "focused": false,
+  "output": "DP-2",
+  "layout": "splith",
+  "workspace_layout": "default",
+  "last_split_layout": "splith",
+  "border": "pixel",
+  "current_border_width": -1,
+  "rect": {
+    "x": 1080,
+    "y": 40,
+    "width": 3440,
+    "height": 1400
+  },
+  "deco_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "window_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "geometry": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "name": "1",
+  "window_icon_padding": -1,
+  "num": 1,
+  "gaps": {
+    "inner": 0,
+    "outer": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "window": null,
+  "window_type": null,
+  "nodes": [
+    {
+      "id": 101114741343280,
+      "type": "con",
+      "orientation": "none",
+      "scratchpad_state": "none",
+      "percent": 1.0,
+      "urgent": false,
+      "marks": [],
+      "focused": true,
+      "output": "DP-2",
+      "layout": "splith",
+      "workspace_layout": "default",
+      "last_split_layout": "splith",
+      "border": "pixel",
+      "current_border_width": 1,
+      "rect": {
+        "x": 1080,
+        "y": 40,
+        "width": 3440,
+        "height": 1400
+      },
+      "deco_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "window_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 3440,
+        "height": 1400
+      },
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 600
+      },
+      "name": "tmux",
+      "window_icon_padding": -1,
+      "window": 31457283,
+      "window_type": "normal",
+      "window_properties": {
+        "class": "Alacritty",
+        "instance": "Alacritty",
+        "machine": "at1ass-ms7e10",
+        "title": "tmux",
+        "transient_for": null
+      },
+      "nodes": [],
+      "floating_nodes": [],
+      "focus": [],
+      "fullscreen_mode": 0,
+      "sticky": true,
+      "floating": "auto_off",
+      "swallows": []
+    }
+  ],
+  "floating_nodes": [],
+  "focus": [
+    101114741343280
+  ],
+  "fullscreen_mode": 1,
+  "sticky": false,
+  "floating": "auto_off",
+  "swallows": []
+}
+{
+  "id": 101114741349440,
+  "type": "workspace",
+  "orientation": "horizontal",
+  "scratchpad_state": "none",
+  "percent": 0.33333333333333331483,
+  "urgent": false,
+  "marks": [],
+  "focused": false,
+  "output": "DP-2",
+  "layout": "splith",
+  "workspace_layout": "default",
+  "last_split_layout": "splith",
+  "border": "pixel",
+  "current_border_width": -1,
+  "rect": {
+    "x": 1080,
+    "y": 0,
+    "width": 3440,
+    "height": 1440
+  },
+  "deco_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "window_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "geometry": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "name": "7",
+  "window_icon_padding": -1,
+  "num": 7,
+  "gaps": {
+    "inner": 0,
+    "outer": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "window": null,
+  "window_type": null,
+  "nodes": [
+    {
+      "id": 101114741349920,
+      "type": "con",
+      "orientation": "none",
+      "scratchpad_state": "none",
+      "percent": 1.0,
+      "urgent": false,
+      "marks": [],
+      "focused": false,
+      "output": "DP-2",
+      "layout": "splith",
+      "workspace_layout": "default",
+      "last_split_layout": "splith",
+      "border": "pixel",
+      "current_border_width": 1,
+      "rect": {
+        "x": 1080,
+        "y": 0,
+        "width": 3440,
+        "height": 1440
+      },
+      "deco_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "window_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 3440,
+        "height": 1440
+      },
+      "geometry": {
+        "x": 1093,
+        "y": 514,
+        "width": 3414,
+        "height": 452
+      },
+      "name": "Spotify Free",
+      "window_icon_padding": -1,
+      "window": 44040196,
+      "window_type": "normal",
+      "window_properties": {
+        "class": "Spotify",
+        "instance": "spotify",
+        "machine": "at1ass-ms7e10",
+        "title": "Spotify Free",
+        "transient_for": null
+      },
+      "nodes": [],
+      "floating_nodes": [],
+      "focus": [],
+      "fullscreen_mode": 0,
+      "sticky": false,
+      "floating": "auto_off",
+      "swallows": []
+    }
+  ],
+  "floating_nodes": [],
+  "focus": [
+    101114741349920
+  ],
+  "fullscreen_mode": 0,
+  "sticky": false,
+  "floating": "auto_off",
+  "swallows": []
+}
+{
+  "id": 101114741356080,
+  "type": "workspace",
+  "orientation": "horizontal",
+  "scratchpad_state": "none",
+  "percent": 0.33333333333333331483,
+  "urgent": false,
+  "marks": [],
+  "focused": false,
+  "output": "DP-2",
+  "layout": "splith",
+  "workspace_layout": "default",
+  "last_split_layout": "splith",
+  "border": "pixel",
+  "current_border_width": -1,
+  "rect": {
+    "x": 1080,
+    "y": 40,
+    "width": 3440,
+    "height": 1400
+  },
+  "deco_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "window_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "geometry": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "name": "10",
+  "window_icon_padding": -1,
+  "num": 10,
+  "gaps": {
+    "inner": 0,
+    "outer": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "window": null,
+  "window_type": null,
+  "nodes": [
+    {
+      "id": 101114741356560,
+      "type": "con",
+      "orientation": "none",
+      "scratchpad_state": "none",
+      "percent": 1.0,
+      "urgent": false,
+      "marks": [],
+      "focused": false,
+      "output": "DP-2",
+      "layout": "splith",
+      "workspace_layout": "default",
+      "last_split_layout": "splith",
+      "border": "none",
+      "current_border_width": 1,
+      "rect": {
+        "x": 1080,
+        "y": 40,
+        "width": 3440,
+        "height": 1400
+      },
+      "deco_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "window_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 3440,
+        "height": 1400
+      },
+      "geometry": {
+        "x": 1080,
+        "y": 40,
+        "width": 3440,
+        "height": 1400
+      },
+      "name": "Emily – (47024)",
+      "window_icon_padding": -1,
+      "window": 48234514,
+      "window_type": "normal",
+      "window_properties": {
+        "class": "TelegramDesktop",
+        "instance": "telegram-desktop",
+        "machine": "at1ass-ms7e10",
+        "title": "Emily – (47024)",
+        "transient_for": null
+      },
+      "nodes": [],
+      "floating_nodes": [],
+      "focus": [],
+      "fullscreen_mode": 0,
+      "sticky": false,
+      "floating": "auto_off",
+      "swallows": []
+    }
+  ],
+  "floating_nodes": [],
+  "focus": [
+    101114741356560
+  ],
+  "fullscreen_mode": 0,
+  "sticky": false,
+  "floating": "auto_off",
+  "swallows": []
+}
