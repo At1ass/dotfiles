@@ -4,12 +4,15 @@ return {
 		"rcarriga/nvim-dap-ui",
 		"theHamsta/nvim-dap-virtual-text",
 		"nvim-neotest/nvim-nio",
+		"jbyuki/one-small-step-for-vimkind",
 	},
 
 	keys = {
 		{ "<leader>d", "", desc = "+debug", mode = {"n", "v"} },
 		{ "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
 		{ "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+		{ "<leader>dE", function() require("dap").set_exception_breakpoints() end, desc = "Toggle Breakpoint" },
+		{ "<leader>dL", function() require("dap").list_breakpoints() end, desc = "List Breakpoints" },
 		{ "<leader>dc", function() require("dap").continue() end, desc = "Continue" },
 		{ "<leader>da", function() require("dap").continue({ before = get_args }) end, desc = "Run with Args" },
 		{ "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
@@ -22,7 +25,7 @@ return {
 		{ "<leader>dn", function() require("dap").step_over() end, desc = "Step Over/[n]ext" },
 		{ "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
 		{ "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
-		{ "<leader>ds", function() require("dap").session() end, desc = "Session" },
+		{ "<leader>dS", function() require("dap").session() end, desc = "Session" },
 		{ "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
 		{ "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
 		{ "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
@@ -101,9 +104,6 @@ return {
 				name = "Select and attach to process",
 				type = "gdb",
 				request = "attach",
-				program = function()
-					return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-				end,
 				pid = function()
 					local name = vim.fn.input('Executable name (filter): ')
 					return require("dap.utils").pick_process({ filter = name })
@@ -123,6 +123,37 @@ return {
 		}
 		dap.configurations.cpp = dap.configurations.c
 
+        dap.adapters.nlua = function(callback, conf)
+          local adapter = {
+            type = "server",
+            host = conf.host or "127.0.0.1",
+            port = conf.port or 8086,
+          }
+          if conf.start_neovim then
+            local dap_run = dap.run
+            dap.run = function(c)
+              adapter.port = c.port
+              adapter.host = c.host
+            end
+            require("osv").run_this()
+            dap.run = dap_run
+          end
+          callback(adapter)
+        end
+        dap.configurations.lua = {
+          {
+            type = "nlua",
+            request = "attach",
+            name = "Run this file",
+            start_neovim = {},
+          },
+          {
+            type = "nlua",
+            request = "attach",
+            name = "Attach to running Neovim instance (port = 8086)",
+            port = 8086,
+          },
+        }
      	dap.listeners.before.attach.dapui_config = function()
      	  ui.open()
      	end

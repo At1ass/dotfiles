@@ -6,6 +6,7 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 		{
 			"L3MON4D3/LuaSnip",
 			version= "v2.*",
@@ -47,7 +48,7 @@ return {
 				['<C-f>'] = cmp.mapping.scroll_docs(4),
 				['<C-Space>'] = cmp.mapping.complete(),
 				['<C-e>'] = cmp.mapping.abort(),
-				['<CR>'] = cmp.mapping.confirm({
+				['<C-c>'] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Insert,
 					select = true,
 				}),
@@ -74,7 +75,12 @@ return {
 			sources = cmp.config.sources(
 				{
 					{ name = 'nvim_lsp' },
+					{ name = 'nvim_lsp_signature_help' },
 					{ name = 'luasnip' }, -- For luasnip users.
+					{
+						name = "lazydev",
+						group_index = 0,
+					}
 				},
 				{
 					{ name = 'buffer' },
@@ -96,6 +102,21 @@ return {
 					{ name = 'cmdline' }
 				}),
 			matching = { disallow_symbol_nonprefix_matching = false }
+		})
+
+		cmp.setup.filetype({"sql"}, {
+			sources = {
+				{name = "luasnip"},
+				{name = "vim-dadbod-completion"},
+				{name = "buffer"},
+			}
+		})
+
+		cmp.setup.filetype({""}, {
+			sources = {
+				{name = "path"},
+				{name = "buffer"},
+			}
 		})
 	end,
 }

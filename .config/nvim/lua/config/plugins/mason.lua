@@ -1,3 +1,17 @@
+local function lsp_keymap(bufnr)
+	local bufopts = { noremap=true, silent=true, buffer=bufnr }
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+	vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+	vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+end
 return {
 	"williamboman/mason-lspconfig.nvim",
 	dependencies = {
@@ -24,23 +38,6 @@ return {
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		require("mason-lspconfig").setup_handlers({
 			function(server_name)
-				local function lsp_keymap(bufnr)
-					local bufopts = { noremap=true, silent=true, buffer=bufnr }
-						vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-						vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-						vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-						vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-						vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-						vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-						vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-						vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-						vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-						vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-						vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-						if server_name == 'clangd' then
-							vim.keymap.set('n', '<leader>h', ':ClangdSwitchSourceHeader<cr>', bufopts)
-						end
-					end
 				--
 				require("lspconfig")[server_name].setup({
 					on_init = function(client)
@@ -77,15 +74,15 @@ return {
 							completion = {callSnippet = 'Replace',},
 							diagnostics = {globals = {'vim'}}
 						},
-						clangd = {
-							InlayHints = {
-								Designators = true,
-								Enabled = true,
-								ParameterNames = true,
-								DeducedTypes = true,
-							},
-							fallbackFlags = { "-std=c++20" },
-						},
+						-- clangd = {
+						-- 	InlayHints = {
+						-- 		Designators = true,
+						-- 		Enabled = true,
+						-- 		ParameterNames = true,
+						-- 		DeducedTypes = true,
+						-- 	},
+						-- 	fallbackFlags = { "-std=c++20" },
+						-- },
 					},
 
 				})
@@ -94,9 +91,11 @@ return {
 			["clangd"] = function () end,
 		})
 		require('lspconfig').clangd.setup({
-			keys = {
-				{ "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
-			},
+			on_attach = function (_, bufnr)
+				local bufopts = { noremap=true, silent=true, buffer=bufnr }
+				vim.keymap.set('n', 'gH', "<cmd>ClangdSwitchSourceHeader<cr>", bufopts)
+				lsp_keymap(bufnr)
+			end,
 			root_dir = function(fname)
 				return require("lspconfig.util").root_pattern(
 				"Makefile",
@@ -124,6 +123,7 @@ return {
 				usePlaceholders = true,
 				completeUnimported = true,
 				clangdFileStatus = true,
+				fallbackFlags = {"--std=c99"}
 			},
 			inlay_hint = {
 				enabled = true,

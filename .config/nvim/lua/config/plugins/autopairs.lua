@@ -4,6 +4,6 @@ return {
 	config = true,
 	opts = 	{
 			disable_filetype = { "TelescopePrompt", "vim" },
-			map_cr = false,
+			map_cr = true,
 		},
 }

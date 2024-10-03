@@ -8,10 +8,11 @@ return {
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
 
-    init = function()
-		vim.keymap.set("n", "<leader>nt", ":Neotree<cr>", {})
-		vim.keymap.set("n", "<leader>qt", ":Neotree close<cr>", {})
-	end,
+	keys = {
+		{"<leader>t", "", desc = "+Neotree", mode = {"n"} },
+		{"<leader>tn", ":Neotree<cr>", {}},
+		{"<leader>tq", ":Neotree close<cr>", {}},
+	},
 
 	opts = {
 		close_if_last_window = true,
